@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Visitor Registration</h1>
+            <p class="subtitle">Please complete this form before entry</p>
+        </div>
+
+        <form id="visitorForm" class="registration-form">
+            <div class="form-group">
+                <label for="visitorName">Full Name *</label>
+                <input
+                type="text"
+                id="visitorName"
+                name="visitorName"
+                required
+                placeholder="Enter your full name"
+            >
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number *</label>
+                <input
+                type="tel"
+                id="phoneNumber"
+                name="phoneNumber"
+                required
+                placeholder="e.g., 0174567890"
+                pattern="[0-9]{10,11}"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="plateNumber">Vehicle Plate Number *</label>
+                <input
+                type="text"
+                id="plateNumber"
+                name="plateNumber"
+                required
+                placeholder="e.g., PNH2945"
+                style="text-transform: toUppercase;"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="unitNumber">Unit Number (Optional)</label>
+                <input
+                type="text"
+                id="=unitNumber"
+                name="unitNumber"
+                placeholder="e.g., B-3-19"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="visitPurpose">Purpose of Visit *</label>
+                <select id="visitPurpose" name="visitPurpose" required>
+                    <option value="">Select purpose</option>
+                    <option value="food-delivery">Food Delivery</option>
+                    <option value="parcel-delivery">Parcel Delivery</option>
+                    <option value="visiting-resident">Visiting Resident</option>
+                    <option value="service-provider">Service Provider</option>
+                    <option value="service-provider">Wedding Event / Party / Any Ceremony Event</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="consent-box">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <span>I agreed to the collection of my data for security purposes only.</span>
+                </label>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                Submit Entry
+            </button>
+        </form>
+
+        <div id="successMessage" class="success-message" style="display: none;">
+            <div class="success-icon">✓</div>
+            <h2>Registration Successful!</h2>
+            <p>You may proceed when gate opens. Thank you!</p>
+            <p class="entry-time" id="entryTime"></p>
+        </div> 
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

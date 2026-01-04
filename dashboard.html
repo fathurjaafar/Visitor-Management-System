@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>Security Dashboard</h1>
+                <p class="current-time" id="currentTime"></p>
+            </div>
+            <div class="header-right">
+            </div>
+        </header>
+
+        <!-- Stats Cards -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="image-stack">
+                <img src="Icon/calendar-static.png" class="static">
+                <img src="Icon/calendar-animated.gif" class="gif">
+            </div>
+                <div class="stat-info">
+                    <h3>Today's Entries</h3>
+                    <p class="stat-number" id="todayEntries">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="image-stack">
+                <img src="Icon/vehicle-static.png" class="static">
+                <img src="Icon/vehicle-animated.gif" class="gif">
+            </div>
+                <div class="stat-info">
+                    <h3>Currently Inside</h3>
+                    <p class="stat-number" id="currentInside">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="image-stack">
+                <img src="Icon/average-static.png" class="static">
+                <img src="Icon/average-animated.gif" class="gif">
+            </div>
+                <div class="stat-info">
+                    <h3>Avg. Duration</h3>
+                    <p class="stat-number" id="avgDuration">-</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications Section -->
+        <div class="notifications-section">
+            <h2>Visitors History</h2>
+            <div class="search-controls" style="margin-bottom: 15px;" >
+                <input
+                    type="text"
+                    id="historySearch" 
+                    placeholder="Search history by name, plate, or phone..."
+                    class="search-input"
+                >
+            </div>
+            <div class="notifications-list" id="notificationsList">
+                <!-- Notifications will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="search-section">
+            <h2>Filter Current Visitors (Inside Now)</h2>
+            <div class="search-controls">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search current visitors by name, plate, or phone..."
+                    class="search-input"
+                >
+                <select id="purposeFilter" class="filter-select">
+                    <option value="">All Purposes</option>
+                    <option value="food-delivery">Food Delivery</option>
+                    <option value="parcel-delivery">Parcel Delivery</option>
+                    <option value="visiting-resident">Visiting Resident</option>
+                    <option value="service-provider">Service Provider</option>
+                    <option value="service-provider">Wedding Event / Party / Any Ceremony Event</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+    
+        <!-- Visitor Records Table -->
+        <div class="records-section">
+            <div class="records-header">
+                <h2>Current Visitors (Inside Now)</h2>
+                <button class="refresh-btn" id="refreshBtn">🔄 Refresh</button>
+            </div>
+            <div class="table-container">
+                <table class="visitors-table">
+                    <thead>
+                        <tr>
+                            <th>Plate Number</th>
+                            <th>Name</th>
+                            <th>Entry Time</th>
+                            <th>Purpose</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="visitorsTableBody">
+                        <!-- Records will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Visitor Details -->
+    <div class="modal" id="detailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Visitor Details</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Details will be populated here -->
+            </div>
+            <div class="modal-footer" id="modalFooter">
+                <!-- Check out button will appear here if visitor is still inside -->
+            </div>
+        </div>
+    </div>
+
+    <button onclick="clearVisitorLogs()" class="delete-btn">
+    Clear All Visitors
+</button>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
